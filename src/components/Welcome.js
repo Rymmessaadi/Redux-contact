@@ -2,14 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Welcome = ({ contacts, deleteContact }) => {
+const Home = ({ contacts, deleteContact }) => {
     return (
         <div className="container">
             <div className="row d-flex flex-column">
-                <div className="col-md-12 my-5 text-right">
-                    <Link to="/add" className="btn btn-outline-dark ">Add Contact</Link>
-                </div>
-
+                <Link to="/add" className="btn btn-outline-dark my-5 ml-auto ">
+                    Add Contact
+                </Link>
                 <div className="col-md-10 mx-auto my-4">
                     <table className="table table-hover">
                         <thead className="table-header bg-dark text-white">
@@ -28,7 +27,7 @@ const Welcome = ({ contacts, deleteContact }) => {
                                         <td>{id + 1}</td>
                                         <td>{contact.name}</td>
                                         <td>{contact.email}</td>
-                                        <td>{contact.number}</td>
+                                        <td>{contact.phone}</td>
                                         <td>
                                             <Link
                                                 to={`/edit/${contact.id}`}
@@ -69,4 +68,4 @@ const mapDispatchToProps = (dispatch) => ({
     },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
