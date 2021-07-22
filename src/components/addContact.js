@@ -6,10 +6,12 @@ import { ErrorMessage } from '@hookform/error-message';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import { addContact } from '../redux/actionAdd';
+
 
 
 const AddContact = () => {
-    const contact = useSelector(state => state);
+    const contact = useSelector(state => state);//récupérer toute la state
     const dispatch = useDispatch();
     const history = useHistory();
     const [name, setName] = useState("");
@@ -32,9 +34,9 @@ const AddContact = () => {
             number
         };
         console.log(data);
-        dispatch({ type: "ADD_CONTACT", payload: data })
+        dispatch(addContact(data))
         toast.success("Student added successfully");
-        history.push("/welcome");
+        history.push("/");
 
     }
 
